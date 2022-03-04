@@ -10,8 +10,8 @@
         <meta name="description" content="CayenneLPP online coder">
         <meta name="author" content="J. Valdauf">
         <title>CayenneLPP online coder</title>
-        <link href='{% static "cayennelpp/css/bootstrap.min.css" %}' rel="stylesheet">
-        <link href='{% static "cayennelpp/css/custom.css" %}' rel="stylesheet">
+        <link href='{% static "cayenne_decoder/css/bootstrap.min.css" %}' rel="stylesheet">
+        <link href='{% static "cayenne_decoder/css/custom.css" %}' rel="stylesheet">
         <link rel="shortcut icon" href="#">
     </head>
 
@@ -27,13 +27,13 @@
                         <div class="collapse navbar-collapse" id="navbarCollapse">
                             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Encode</a>
+                                    <a class="nav-link decode active" href="#">Decode</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Decode</a>
+                                    <a class="nav-link encode" href="#">Encode</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">About</a>
+                                    <a class="nav-link about" href="#">About</a>
                                 </li>
                             </ul>
                         </div>
@@ -49,9 +49,19 @@
             </div>
         </main>
 
-        <script src='{% static "cayennelpp/js/bootstrap.bundle.min.js" %}'></script>
-        <script src='{% static "cayennelpp/vendor/jquery/jquery.min.js" %}'></script>
-        <script src='{% static "cayennelpp/js/content-loading.js" %}'></script>
+        <script src='{% static "cayenne_decoder/js/bootstrap.bundle.min.js" %}'></script>
+        <script src='{% static "cayenne_decoder/vendor/jquery/jquery.min.js" %}'></script>
+        <script src='{% static "cayenne_decoder/js/content-loading.js" %}'></script>
+        <script src='{% static "cayenne_decoder/js/jquery.form.min.js" %}'></script>
+        <script>
+            $(document).ready(function() {
+                $('a.nav-link').on('click', function(e){
+                    e.preventDefault();
+                    $('a.nav-link').removeClass('active');
+                    $(this).addClass('active');
+                });
+            });
+        </script>
 
     </body>
 </html>

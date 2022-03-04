@@ -1,1 +1,31 @@
-DECODE
+<h2>Decode from CayenneLPP format</h2>
+<p>Simply enter your data then push the decode button.</p>
+<form action="{% url 'decode' %}" method="post" id="decode-form" role="form" class="form-horizontal">
+    {{ form.media.css }}
+    {{ form.media.js }}
+    {% csrf_token %}
+    {{ form.decode_text }}
+    <br>
+    <button type="submit" class="btn btn-success form-control">Decode</button>
+</form>
+<br>
+<table class="table" id="decoded_table">
+    <tr>
+        <th>Type</th>
+        <th>Channel</th>
+        <th>Value</th>
+    </tr>
+</table>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('form#decode-form').ajaxForm({
+            success: function(res, status, xhr, form) {
+                $("#decoded_table").find("tr:gt(0)").remove();
+                $.each(res['decoded_data'], function(index, value){ 
+                    $('#decoded_table tr:last').after('<tr><td>'+value[0]+': '+value[1]+'</td><td>'+value[2]+'</td><td>'+value[3]+'</td></tr>');
+                });
+            }
+        });
+    });
+</script>
