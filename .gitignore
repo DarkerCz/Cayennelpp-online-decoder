@@ -10,3 +10,4 @@ uwsgi-touch-reload.txt
 nginx.conf
 supervisord_*.conf
 var/*
+robots.txt
